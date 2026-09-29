@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 22</title>
+    <style>
+        .box22 { border: 1px solid #aaa; padding: 15px; width: 280px; font-family: sans-serif; }
+        .box22 input { margin-bottom: 8px; width: 120px; }
+        .box22 button { margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="box22">
+    <label>1st Number :</label> <input type="number" id="num1" value="12"><br>
+    <label>2nd Number :</label> <input type="number" id="num2" value="10"><br>
+    <button onclick="tinh('nhan')">Multiply</button>
+    <button onclick="tinh('chia')">Divide</button>
+    <p>The Result Is : <br><span id="res22" style="font-weight: bold;">120</span></p>
+</div>
+
+<script>
+function tinh(phepTinh) {
+    let a = parseFloat(document.getElementById('num1').value);
+    let b = parseFloat(document.getElementById('num2').value);
+    let res = 0;
+    if (isNaN(a) || isNaN(b)) {
+        document.getElementById('res22').innerText = "Vui lòng nhập số!";
+        return;
+    }
+    if (phepTinh === 'nhan') res = a * b;
+    else {
+        if (b === 0) { document.getElementById('res22').innerText = "Không chia được cho 0"; return; }
+        res = a / b;
+    }
+    document.getElementById('res22').innerText = res;
+}
+</script>
+
+</body>
+</html>

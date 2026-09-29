@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 25</title>
+    <style>
+        .menu-container { background-color: #ccff00; width: 360px; padding: 10px; font-family: sans-serif; border: 1px solid green; }
+        .title { text-align: center; font-weight: bold; margin-bottom: 10px; }
+        .table-menu { width: 100%; border-collapse: collapse; }
+        .table-menu th { color: blue; }
+        select { width: 100%; height: 110px; }
+        .res-table { width: 100%; border-collapse: collapse; background: #ccffff; margin-top: 10px; border: 2px solid blue; }
+        .res-table th { color: blue; border: 1px solid blue; }
+        .res-table td { border: 1px solid blue; padding: 3px; }
+    </style>
+</head>
+<body>
+
+<div class="menu-container">
+    <div class="title">THỰC ĐƠN</div>
+    <table class="table-menu">
+        <tr>
+            <th>Thức ăn</th>
+            <th>Nước uống</th>
+            <th style="color: blue;">Thời điểm</th>
+        </tr>
+        <tr>
+            <td>
+                <select id="thucAn" multiple>
+                    <option value="20000">Bún bò</option>
+                    <option value="18000">Hủ tiêu</option>
+                    <option value="17000">Bánh canh</option>
+                    <option value="19000">Phở bò</option>
+                    <option value="15000">Nuôi</option>
+                    <option value="12000">Bánh mì thịt</option>
+                    <option value="15000">Bánh cuốn</option>
+                </select>
+            </td>
+            <td>
+                <select id="nuocUong" multiple>
+                    <option value="12000">Cà phê đá</option>
+                    <option value="15000">Cà phê sữa đá</option>
+                    <option value="13000">Chanh dây</option>
+                    <option value="12000">Chanh muối</option>
+                    <option value="14000">Xí muội</option>
+                    <option value="13000">Sữa tươi</option>
+                    <option value="17000">Cam vắt</option>
+                </select>
+            </td>
+            <td>
+                <input type="radio" name="thoiDiem" value="1" id="ngayRad" checked><label for="ngayRad">Ban ngày</label><br><br>
+                <input type="radio" name="thoiDiem" value="1.1" id="demRad"><label for="demRad">Ban đêm</label>
+            </td>
+        </tr>
+    </table>
+    <center style="margin-top: 8px;">
+        <button onclick="tinhTien()">Tính tiền</button>
+    </center>
+
+    <table class="res-table" id="bangHoaDon">
+        <thead>
+            <tr>
+                <th>Các món đã dùng</th>
+                <th>Tiền</th>
+            </tr>
+        </thead>
+        <tbody id="bodyHoaDon">
+        </tbody>
+    </table>
+</div>
+
+<script>
+function tinhTien() {
+    let thucAnSelect = document.getElementById('thucAn');
+    let nuocUongSelect = document.getElementById('nuocUong');
+    let body = document.getElementById('bodyHoaDon');
+    body.innerHTML = '';
+
+    let tongTien = 0;
+
+    // Lấy thức ăn được chọn
+    for (let opt of thucAnSelect.selectedOptions) {
+        let gia = parseInt(opt.value);
+        tongTien += gia;
+        body.innerHTML += `<tr><td>${opt.text}</td><td>${gia}</td></tr>`;
+    }
+
+    // Lấy nước uống được chọn
+    for (let opt of nuocUongSelect.selectedOptions) {
+        let gia = parseInt(opt.value);
+        tongTien += gia;
+        body.innerHTML += `<tr><td>${opt.text}</td><td>${gia}</td></tr>`;
+    }
+
+    // Nhân hệ số ban đêm
+    let heSo = parseFloat(document.querySelector('input[name="thoiDiem"]:checked').value);
+    tongTien = Math.round(tongTien * heSo);
+
+    body.innerHTML += `<tr style="font-weight:bold;"><td>Tổng tiền</td><td>${tongTien} đồng</td></tr>`;
+}
+</script>
+
+</body>
+</html>

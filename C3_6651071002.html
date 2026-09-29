@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 24</title>
+    <style>
+        .box24 { background-color: #ffcccc; border: 2px solid blue; width: 450px; padding: 10px; font-weight: bold; }
+        .res-box { background: white; border: 1px solid black; text-align: center; margin-top: 10px; padding: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="box24">
+    Ngày <input type="number" id="ngay" value="12" style="width: 50px;">
+    Tháng Select: 
+    <select id="thang">
+        <option value="1" selected>1</option>
+        <option value="2">2</option><option value="3">3</option><option value="4">4</option>
+        <option value="5">5</option><option value="6">6</option><option value="7">7</option>
+        <option value="8">8</option><option value="9">9</option><option value="10">10</option>
+        <option value="11">11</option><option value="12">12</option>
+    </select>
+    năm <input type="number" id="nam" value="2015" style="width: 70px;">
+    <br><br>
+    <center><button onclick="xuatThu()">Xuất thứ</button></center>
+    <div id="res24" class="res-box">Thứ 2 Ngày 12 tháng 1 năm 2015</div>
+</div>
+
+<script>
+function xuatThu() {
+    let d = parseInt(document.getElementById('ngay').value);
+    let m = parseInt(document.getElementById('thang').value);
+    let y = parseInt(document.getElementById('nam').value);
+    
+    let date = new Date(y, m - 1, d);
+    let thuArr = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
+    let thu = thuArr[date.getDay()];
+    
+    document.getElementById('res24').innerText = `${thu} Ngày ${d} tháng ${m} năm ${y}`;
+}
+</script>
+
+</body>
+</html>

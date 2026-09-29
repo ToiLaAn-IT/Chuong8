@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 23</title>
+    <style>
+        table { background-color: #ffcc80; border-collapse: collapse; border: 2px solid #b33900; }
+        td { padding: 5px 10px; border: 1px solid #b33900; font-weight: bold; }
+        input { width: 100%; box-sizing: border-box; }
+        button { background: #e6e6e6; border: 1px solid #888; border-radius: 10px; padding: 2px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<form>
+    <table>
+        <tr>
+            <td>Lương</td>
+            <td><input type="number" id="luong" value="1000000"></td>
+        </tr>
+        <tr>
+            <td>Hệ số lương</td>
+            <td><input type="number" step="0.1" id="heSo" value="3.2"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button type="button" onclick="tinhLuong()">Tính lương tháng</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Lương tháng</td>
+            <td><input type="text" id="luongThang" value="3200000" readonly></td>
+        </tr>
+    </table>
+</form>
+
+<script>
+function tinhLuong() {
+    let luong = parseFloat(document.getElementById('luong').value) || 0;
+    let heSo = parseFloat(document.getElementById('heSo').value) || 0;
+    document.getElementById('luongThang').value = luong * heSo;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 26</title>
+    <style>
+        .box26 { background-color: #e0ffff; border: 1px solid #7fffd4; width: 450px; padding: 10px; font-family: sans-serif; }
+        .title26 { font-weight: bold; text-align: center; margin-bottom: 10px; }
+        table { width: 100%; text-align: center; }
+        input { text-align: center; width: 120px; }
+    </style>
+</head>
+<body>
+
+<div class="box26">
+    <div class="title26">TÍNH CAN CHI CỦA NGÀY ÂM LỊCH</div>
+    <table>
+        <tr>
+            <td><b>Năm dương lịch</b></td>
+            <td></td>
+            <td><b>Can chi năm âm lịch</b></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="namDuong" value="2015"></td>
+            <td><button onclick="tinhCanChi()">---></button></td>
+            <td><input type="text" id="canChiRes" value="Ất mùi" readonly></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+function tinhCanChi() {
+    let namStr = document.getElementById('namDuong').value.trim();
+    let nam = parseInt(namStr);
+
+    // Validate dữ liệu
+    if (isNaN(nam) || nam <= 0) {
+        alert("Vui lòng nhập số năm hợp lệ!");
+        return;
+    }
+
+    let CAN = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"];
+    let CHI = ["Tý", "Sửu", "Dần", "Mẹo", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
+
+    let indexCan = (nam + 6) % 10;
+    let indexChi = (nam + 8) % 12;
+
+    document.getElementById('canChiRes').value = CAN[indexCan] + " " + CHI[indexChi].toLowerCase();
+}
+</script>
+
+</body>
+</html>
